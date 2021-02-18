@@ -1,13 +1,33 @@
 package lab2MurrielBlake;
 
-public class SortingUtilityProxy implements AbcInterface{
+import java.util.List;
+
+public class SortingUtilityProxy implements AbcInterface {
+
+    private AbcInterface serviceObj;
+
+    SortingUtilityProxy() {
+
+    }
+
     @Override
-    public void sort() {
+    public List<Product> sort(List<Product> products, int sortingApproach) {
+        serviceObj = new SortingUtilityService();
+        serviceObj.sort(products,sortingApproach);
+        if (sortingApproach == 1) {
+            for (Product p : products){
+                System.out.println("Product ID: " + p.getID() + " Product Name: " + p.getName() + " Product Price: " + p.getPrice());
+            }
+            return products;
+        }
+        else if (sortingApproach == 2) {
+            for (Product p : products) {
+                System.out.println("Product ID: " + p.getID() + " Product Name: " + p.getName() + " Product Price: " + p.getPrice());
+            }
+            return products;
+            }
+        return null;
+    } //end of funct
 
-    }
-
-    public void printLog()
-    {
-
-    }
 }
+
